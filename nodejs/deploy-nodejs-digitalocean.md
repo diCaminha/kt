@@ -24,4 +24,32 @@
        2. `CREATE TABLE nodedeploy`
        3. `CREATE USER dbcompany WITH ENCRYPTED PASSWORD 'defwfvwgvwljgfbljbg'`
        4. `GRANT ALL PRIVILEGES ON DATABASE nodedeploy TO dbcompany`
-10. 
+10. configure nodejs project in digital ocean machine
+    1.  create .env file in the root of the project
+         ```java
+         PORT=2222
+         NODE_ENV=development
+
+         DB_HOST=localhost
+         DB_USER=docker
+         DB_PASS=docker
+         DB_NAME=sqlnode
+
+         ```
+    2. in the config/database.js file, get the values by accessing env var:
+        ```javascript
+            module.exports = {
+                dialect: 'postgres',
+                host: process.env.DB_HOST,
+                username: process.env.DB_USERNAME,
+                password: process.env.DB_PASSWORD,
+            }
+        ```
+    3. add the nodeenv dependency in the server.js file and the config/database.js
+        `require('dotenv/config');`
+
+11. Git clone the project in the machine
+
+12. Copy the file .env.examaple to a new file .env and set the variables for the config in the machine
+13. run node server.js
+    
